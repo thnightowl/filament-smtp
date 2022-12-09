@@ -1,13 +1,13 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace TheNightOwl\FilamentSmtp;
 
 use Filament\PluginServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 
-class SkeletonServiceProvider extends PluginServiceProvider
+class FilamentSmtpServiceProvider extends PluginServiceProvider
 {
-    public static string $name = 'skeleton';
+    public static string $name = 'filament-smtp';
 
     protected array $resources = [
         // CustomResource::class,
@@ -22,15 +22,15 @@ class SkeletonServiceProvider extends PluginServiceProvider
     ];
 
     protected array $styles = [
-        'plugin-skeleton' => __DIR__.'/../resources/dist/skeleton.css',
+        'plugin-filament-smtp' => __DIR__.'/../resources/dist/filament-smtp.css',
     ];
 
     protected array $scripts = [
-        'plugin-skeleton' => __DIR__.'/../resources/dist/skeleton.js',
+        'plugin-filament-smtp' => __DIR__.'/../resources/dist/filament-smtp.js',
     ];
 
     // protected array $beforeCoreScripts = [
-    //     'plugin-skeleton' => __DIR__ . '/../resources/dist/skeleton.js',
+    //     'plugin-filament-smtp' => __DIR__ . '/../resources/dist/filament-smtp.js',
     // ];
 
     public function configurePackage(Package $package): void

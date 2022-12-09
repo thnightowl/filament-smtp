@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "thenightowl/filament-smtp",
+    "description": "This is my package filament-smtp",
     "keywords": [
-        ":vendor_name",
+        "thenightowl",
         "laravel",
-        ":package_slug"
+        "filament-smtp"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/thnightowl/filament-smtp",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Daniel Felix",
+            "email": "danielfelix1995@gmail.com",
             "role": "Developer"
         }
     ],
@@ -22,7 +22,6 @@
         "illuminate/contracts": "^9.0"
     },
     "require-dev": {
-        "laravel/pint": "^1.0",
         "nunomaduro/collision": "^6.0",
         "nunomaduro/larastan": "^2.0.1",
         "orchestra/testbench": "^7.0",
@@ -38,17 +37,16 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "TheNightOwl\\FilamentSmtp\\": "src",
+            "TheNightOwl\\FilamentSmtp\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "TheNightOwl\\FilamentSmtp\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "pint": "vendor/bin/pint",
         "test:pest": "vendor/bin/pest --parallel",
         "test:phpstan": "vendor/bin/phpstan analyse",
         "test": [
@@ -67,10 +65,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "TheNightOwl\\FilamentSmtp\\FilamentSmtpServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentSmtp": "TheNightOwl\\FilamentSmtp\\Facades\\FilamentSmtp"
             }
         }
     },
