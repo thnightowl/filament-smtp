@@ -27,4 +27,9 @@ return [
     | Set the model for the FilamentSmtpResource.
     */
     'model' => \TheNightOwl\FilamentSmtp\Models\FilamentSmtp::class,
+    /*
+    |--------------------------------------------------------------------------
+    | Set the redirect url for the socialite. Leave the base url.
+    */
+    'redirect_url' => '/auth/callback',
 ];

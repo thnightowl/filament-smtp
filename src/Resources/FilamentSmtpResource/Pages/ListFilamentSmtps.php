@@ -5,8 +5,11 @@ namespace TheNightOwl\FilamentSmtp\Resources\FilamentSmtpResource\Pages;
 use Filament\Pages\Actions\ButtonAction;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Socialite\Facades\Socialite;
+use TheNightOwl\FilamentSmtp\Facades\Mail;
+use TheNightOwl\FilamentSmtp\Mail\TestMail;
 use TheNightOwl\FilamentSmtp\Resources\FilamentSmtpResource;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Notifications\Notification;
 
 class ListFilamentSmtps extends ListRecords
 {
@@ -27,7 +30,10 @@ class ListFilamentSmtps extends ListRecords
         return [
             ButtonAction::make('Google')
                 ->icon('heroicon-o-login')
-                ->action(fn() => $this->loginRedirect())
+                ->action(fn() => $this->loginRedirect()),
+            ButtonAction::make('Test')
+                ->icon('heroicon-o-mail')
+                ->action(fn() => $this->testMail())
         ];
     }
 
@@ -41,6 +47,18 @@ class ListFilamentSmtps extends ListRecords
             ->scopes($scopes)
             ->with(["access_type" => "offline", "prompt" => "consent select_account"])
             ->redirect()->getTargetUrl());
+    }
+
+    public function testMail()
+    {
+        try {
+            Mail::to(auth()->user()->email)->send(new TestMail());
+        } catch (\Exception $e) {
+            Notification::make()->title($e->getMessage())->danger()->send();
+            return;
+        }
+
+        return Notification::make()->title('Email sent successfully')->success()->send();
     }
 
     public function mount(): void

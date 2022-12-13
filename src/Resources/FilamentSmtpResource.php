@@ -47,7 +47,7 @@ class FilamentSmtpResource extends Resource
                 TextColumn::make('username')->label('Username')->searchable()->sortable(),
                 ToggleColumn::make('is_default')->label('Default')->searchable()->sortable(),
                 TextColumn::make('created_at')->label('Created')->since()->searchable()->sortable(),
-                TextColumn::make('last_used_at')->label('Updated')->since()->searchable()->sortable(),
+                TextColumn::make('updated_at')->label('Updated')->since()->searchable()->sortable(),
             ])
             ->filters([
 
