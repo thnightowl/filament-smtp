@@ -1,6 +1,6 @@
 {
     "name": "thenightowl/filament-smtp",
-    "description": "This is my package filament-smtp",
+    "description": "Filament SMTP package",
     "keywords": [
         "thenightowl",
         "laravel",
@@ -13,13 +13,19 @@
             "name": "Daniel Felix",
             "email": "danielfelix1995@gmail.com",
             "role": "Developer"
+        },
+        {
+            "name": "Pranesh Palanisamy",
+            "email": "pranesh.vimal5@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.0",
-        "filament/filament": "^2.0",
-        "spatie/laravel-package-tools": "^1.13.5",
-        "illuminate/contracts": "^9.0"
+        "filament/filament": "^2.16",
+        "illuminate/contracts": "^9.0",
+        "laravel/socialite": "^5.5",
+        "spatie/laravel-package-tools": "^1.13.5"
     },
     "require-dev": {
         "nunomaduro/collision": "^6.0",
