@@ -3,7 +3,9 @@
 namespace TheNightOwl\FilamentSmtp;
 
 use Filament\PluginServiceProvider;
+use Illuminate\Console\Scheduling\Schedule;
 use Spatie\LaravelPackageTools\Package;
+use TheNightOwl\FilamentSmtp\Commands\SyncAccessToken;
 use TheNightOwl\FilamentSmtp\Resources\FilamentSmtpResource;
 
 class FilamentSmtpServiceProvider extends PluginServiceProvider
@@ -20,6 +22,24 @@ class FilamentSmtpServiceProvider extends PluginServiceProvider
             ->name(static::$name)
             ->hasConfigFile()
             ->hasMigration('create_filament_smtp_table')
-            ->hasRoute('web');
+            ->hasRoute('web')
+            ->hasCommands($this->getCommands());
+    }
+
+    public function boot()
+    {
+        parent::boot();
+        $this->app->booted(function () {
+            $schedule = app(Schedule::class);
+            // every day 12 am
+            $schedule->command('filament-smtp:sync-access-token')->dailyAt('00:00');
+        });
+    }
+
+    protected function getCommands(): array
+    {
+        return [
+            SyncAccessToken::class,
+        ];
     }
 }

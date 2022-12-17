@@ -21,9 +21,6 @@ return new class extends Migration
     
         Schema::create($tableName, function (Blueprint $table) {
             $table->id();
-
-            // auth user id
-            $table->bigInteger('user_id')->unsigned()->nullable();
         
             // smtp settings
             $table->string('driver')->default('smtp');

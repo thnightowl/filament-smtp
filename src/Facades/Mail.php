@@ -9,7 +9,7 @@ class Mail extends ParentMail
 
     public static function __callStatic($method, $parameters)
     {
-        $smtp = (config('filament-smtp.model'))::where(['user_id' => auth()->id(), 'is_default' => 1])->first();
+        $smtp = (config('filament-smtp.model'))::where('is_default', 1)->first();
 
         if ($smtp) {
             config([

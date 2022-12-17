@@ -15,11 +15,6 @@ class ListFilamentSmtps extends ListRecords
 {
     protected static string $resource = FilamentSmtpResource::class;
 
-    protected function getTableQuery(): Builder
-    {
-        return parent::getTableQuery()->where('user_id', auth()->id());
-    }
-
     protected function isTablePaginationEnabled(): bool
     {
         return true;

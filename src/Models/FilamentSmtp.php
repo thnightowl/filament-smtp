@@ -14,7 +14,6 @@ class FilamentSmtp extends Model
     }
 
     protected $fillable = [
-        'user_id',
         'driver',
         'host',
         'port',
@@ -30,10 +29,5 @@ class FilamentSmtp extends Model
     protected $casts = [
         'is_default' => 'boolean'
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(config('auth.providers.users.model'));
-    }
 
 }
