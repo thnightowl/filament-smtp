@@ -31,8 +31,8 @@ class FilamentSmtpServiceProvider extends PluginServiceProvider
         parent::boot();
         $this->app->booted(function () {
             $schedule = app(Schedule::class);
-            // every day 12 am
-            $schedule->command('filament-smtp:sync-access-token')->dailyAt('00:00');
+            // every hour
+            $schedule->command('filament-smtp:sync-access-token')->everyminute();
         });
     }
 
