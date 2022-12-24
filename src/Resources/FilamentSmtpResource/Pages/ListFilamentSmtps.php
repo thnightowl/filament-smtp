@@ -60,14 +60,14 @@ class ListFilamentSmtps extends ListRecords
     {
         if (session('googleUser')) {
 
-            $removeDefault = (config('filament-smtp.model'))::where(['user_id' => auth()->id(), 'is_default' => 1])->first();
+            $removeDefault = (config('filament-smtp.model'))::where('is_default', 1)->first();
 
             if ($removeDefault) {
                 $removeDefault->is_default = 0;
                 $removeDefault->save();
             }
 
-            $smtp = (config('filament-smtp.model'))::where(['user_id' => auth()->id(), 'username' => session('googleUser')->email])->first();
+            $smtp = (config('filament-smtp.model'))::where('username', session('googleUser')->email)->first();
 
             if (!$smtp) {
                 $smtp = new (config('filament-smtp.model'));
@@ -79,7 +79,6 @@ class ListFilamentSmtps extends ListRecords
             $smtp->encryption = 'tls';
             $smtp->username = session('googleUser')->email;
             $smtp->password = session('googleUser')->token;
-            $smtp->user_id = auth()->user()->id;
             $smtp->from_address = session('googleUser')->email;
             $smtp->from_name = session('googleUser')->name;
             $smtp->is_default = 1;
